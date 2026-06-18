@@ -1,17 +1,15 @@
 package com.backend.ecommerce_store.models;
 
 import jakarta.persistence.*;
-import lombok.Data;
 
-@Data
 @Entity
-public class User {
+public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @Column(unique = true)
-    private String email;
-    private String password;
-
+    @ManyToOne
+    private Cart cart;
+    @ManyToOne
+    private Product product;
+    private Integer quantity;
 }

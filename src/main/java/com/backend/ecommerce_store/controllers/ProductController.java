@@ -17,10 +17,8 @@ public class ProductController {
 
     @PostMapping("")
     public Product addProduct(@RequestBody Product product){
-        System.out.println(product);
         return productService.addProduct(product);
     }
-
     @GetMapping("")
     public List<Product> getAllProducts(){
         return productService.getAllProducts();
@@ -29,11 +27,14 @@ public class ProductController {
     public Optional<Product> getProduct(@PathVariable Integer id){
         return productService.getProductById(id);
     }
-
-
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Integer id){
         productService.deleteProduct(id);
+    }
+    @PutMapping("/{id}")
+    public Product updateProduct(@PathVariable Integer id,
+                                 @RequestBody Product product){
+        return productService.updateProduct(id, product);
     }
 
 }

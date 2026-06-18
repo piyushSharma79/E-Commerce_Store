@@ -3,15 +3,16 @@ package com.backend.ecommerce_store.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+import java.util.List;
+
 @Entity
-public class User {
+@Data
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    @Column(unique = true)
-    private String email;
-    private String password;
-
+    @OneToOne
+    private User user;
+    @OneToMany
+    private List<CartItem> items;
 }

@@ -1,5 +1,6 @@
 package com.backend.ecommerce_store.services;
 
+import com.backend.ecommerce_store.exceptions.ProductNotFoundException;
 import com.backend.ecommerce_store.models.Product;
 import com.backend.ecommerce_store.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,18 @@ public class ProductService {
     public Optional<Product> getProductById(Integer id){
         return productRepository.findById(id);
     }
-
     public void deleteProduct(Integer id){
         productRepository.deleteById(id);
+    }
+    public Product updateProduct(Integer id, Product product){
+        Product existingProduct =
+                productRepository.findById(id)
+                        .orElseThrow (() -> new ProductNotFoundException("Product with this id is not found"));
+        existingProduct.setName(product.getName());
+        existingProduct.setDescription(product.getDescription());
+        existingProduct.setPrice( product.getPrice());
+        existingProduct.setImageUrl( product.getImageUrl());
+        existingProduct.setStock( product.getStock());
+        return this.productRepository.save(existingProduct);
     }
 }
