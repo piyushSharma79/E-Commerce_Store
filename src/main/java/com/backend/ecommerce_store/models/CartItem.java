@@ -1,8 +1,10 @@
 package com.backend.ecommerce_store.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
+@Data
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
