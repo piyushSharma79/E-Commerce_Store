@@ -27,5 +27,4 @@ public class CartController {
         return cartService.removeProductFromCart(userId, productId);
     }
 
-
 }

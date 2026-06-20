@@ -66,7 +66,6 @@ public class CartService {
     }
 
     public Cart getCartByUser(Integer userId){
-
         User user = userRepository.findById(userId)
                 .orElseThrow(() ->
                         new UserNotFoundException("User not found"));

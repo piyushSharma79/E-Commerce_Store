@@ -1,22 +1,21 @@
 package com.backend.ecommerce_store.models;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
 
 @Entity
-@Data
-public class CartItem {
+public class OrderItem {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @ManyToOne
-    @JsonIgnore
-    private Cart cart;
+    private Order order;
 
     @ManyToOne
     private Product product;
 
     private Integer quantity;
+
+    private Double priceAtPurchase;
 }
