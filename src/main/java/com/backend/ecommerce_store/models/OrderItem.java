@@ -1,7 +1,9 @@
 package com.backend.ecommerce_store.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 public class OrderItem {
 
