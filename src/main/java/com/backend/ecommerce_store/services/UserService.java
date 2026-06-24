@@ -22,8 +22,10 @@ public class UserService {
         return userRepository.findAll();
 
     }
-    public Optional<User> getUserById(Integer id){
-        return userRepository.findById(id);
+    public User getUserById(Integer id){
+        return userRepository.findById(id)
+            .orElseThrow( () ->
+                        new UserNotFoundException("User not found"));
 
     }
     public User updateUser(Integer id, User user){
