@@ -51,6 +51,7 @@ public class OrderService {
             double totalAmount = 0;
             order = orderRepository.save(order);
 
+            List<OrderItem> orderItems = new ArrayList<>();
             for(CartItem cartItem : cart.getItems()){
 
                 OrderItem orderItem = new OrderItem();
@@ -80,15 +81,15 @@ public class OrderService {
                         product.getStock()
                                 - cartItem.getQuantity()
                 );
-
+                orderItems.add(orderItem);
                 productRepository.save(product);
                 orderItemRepository.save(orderItem);
-                order.setTotalAmount(totalAmount);
+            }
+            order.setTotalAmount(totalAmount);
                 orderRepository.save(order);
                 cartItemRepository.deleteAll(
                         cart.getItems()
                 );
-            }
             return order;
         }
     }
