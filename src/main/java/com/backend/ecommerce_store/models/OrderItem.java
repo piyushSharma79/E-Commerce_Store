@@ -12,6 +12,7 @@ public class OrderItem {
     private Integer id;
 
     @ManyToOne
+    @JsonIgnore
     private Order order;
 
     @ManyToOne
