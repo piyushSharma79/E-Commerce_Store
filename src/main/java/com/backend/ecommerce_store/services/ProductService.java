@@ -21,8 +21,10 @@ public class ProductService {
     public List<Product> getAllProducts(){
         return productRepository.findAll();
     }
-    public Optional<Product> getProductById(Integer id){
-        return productRepository.findById(id);
+    public Product getProductById(Integer id){
+        return productRepository.findById(id)
+            .orElseThrow(() ->
+                        new ProductNotFoundException("Product not found"));
     }
     public void deleteProduct(Integer id){
         productRepository.deleteById(id);
