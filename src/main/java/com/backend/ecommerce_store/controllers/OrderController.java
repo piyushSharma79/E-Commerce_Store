@@ -5,6 +5,8 @@ import com.backend.ecommerce_store.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -20,5 +22,10 @@ public class OrderController {
     @GetMapping("/{orderId}")
     public Order getOrderById(@PathVariable Integer orderId){
         return orderService.getOrderById(orderId);
+    }
+
+    @GetMapping("/user/{userId}")
+    public List<Order> getOrdersByUser(@PathVariable Integer userId) {
+        return orderService.getOrdersByUser(userId);
     }
 }
