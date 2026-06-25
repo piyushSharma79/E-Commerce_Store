@@ -2,7 +2,8 @@ package com.backend.ecommerce_store.repositories;
 
 import com.backend.ecommerce_store.models.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
 public interface OrderRepository extends JpaRepository<Order, Integer> {
-//    public Order placeOrder(Integer userId);
+  List<Order> findByUserId(Integer userId);
 }
