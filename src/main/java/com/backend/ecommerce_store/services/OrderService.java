@@ -100,5 +100,8 @@ public class OrderService {
                     new OrderNotFoundException("Order of this id not found")
                 );
     }
+    public List<Order> getOrdersByUser(Integer userId) {
+        return orderRepository.findByUserId(userId);
+    }
 
 }
